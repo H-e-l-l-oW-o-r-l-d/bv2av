@@ -13,7 +13,7 @@ public class BV2AV {
 
 	static {
 		for (int i = 0; i < 58; i++) {
-			tr.put(table[i], BigInteger.valueOf(i));
+			tr.put(Character.valueOf(table[i]), BigInteger.valueOf(i));
 		}
 	}
 
@@ -23,13 +23,13 @@ public class BV2AV {
 
 	public static String encode(BigInteger av) {
 		av = av.xor(xor).add(add);
-		StringBuilder ret = new StringBuilder(12).append("BV          ");
+		char[] ret = "BV          ".toCharArray();
 
 		for (int i = 0; i < 10; i++) {
 			int num = av.divide(FIFTY_EIGHT.pow(i)).divideAndRemainder(FIFTY_EIGHT)[1].intValue();
-			ret.setCharAt(s[i], table[num]);
+			ret[s[i]] = table[num];
 		}
-		return ret.toString();
+		return new String(ret);
 	}
 
 	public static BigInteger decode(String bv) {
