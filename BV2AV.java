@@ -1,5 +1,3 @@
-
-
 import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +23,7 @@ public class BV2AV {
 
 	public static String encode(BigInteger av) {
 		av = av.xor(xor).add(add);
-		StringBuilder ret = new StringBuilder(13).append("BV          ");
+		StringBuilder ret = new StringBuilder(12).append("BV          ");
 
 		for (int i = 0; i < 10; i++) {
 			int num = av.divide(FIFTY_EIGHT.pow(i)).divideAndRemainder(FIFTY_EIGHT)[1].intValue();
@@ -37,7 +35,6 @@ public class BV2AV {
 	public static BigInteger decode(String bv) {
 		BigInteger av = BigInteger.ZERO;
 		char[] bva = bv.toCharArray();
-
 		for (int i = 0; i < 10; i++) {
 			av = av.add(tr.get(bva[s[i]]).multiply(FIFTY_EIGHT.pow(i)));
 		}
