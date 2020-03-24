@@ -13,12 +13,12 @@ public class BV2AV {
 
 	static {
 		for (int i = 0; i < 58; i++) {
-			tr.put(table[i], new BigInteger(Integer.toString(i)));
+			tr.put(table[i], BigInteger.valueOf(i));
 		}
 	}
 
 	public static String encode(long av) {
-		return encode(new BigInteger(Long.toString(av)));
+		return encode(BigInteger.valueOf(av));
 	}
 
 	public static String encode(BigInteger av) {
